@@ -1,0 +1,22 @@
+.movie-display{
+    margin-top: 30px;
+}
+.movie-display h2{
+    font-size: max(2vw,24px);
+    font-weight: 600;
+}
+.movie-display-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(240px,1fr));
+    margin-top: 30px;
+    gap: 50px;;
+    row-gap: 40px;
+}
+.movie-item{
+    /* width: 100%; */
+    margin: auto;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px rgb(107, 139, 59);
+    transition: 0.13s;
+    animation: fadeIn 1s;
+}

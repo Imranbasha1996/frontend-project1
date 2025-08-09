@@ -1,0 +1,68 @@
+.header{
+    height: 34vw;
+    
+    margin:30px auto;
+    background: url('../../assets/bg.jpg') no-repeat;
+    background-size: cover;
+    position: relative;
+    color:whitesmoke;
+    border-radius: 40px;
+}
+.header-contents{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 1.5vw;
+    max-width: 50%;
+    top: 30%;
+    left: 20vw;
+    animation: fadeIn 5s;
+
+}
+.header-contents h1{
+    font-weight:500;
+    color:rgb(236, 18, 203);
+    font-size:max(4.5vw,22px);
+    font-style: italic;
+}
+.header-contents p{
+    color:rgb(11, 242, 7);
+}
+.header-contents button{
+    border:none;
+    color:rgb(233, 34, 34);
+    font-weight:600;
+    padding:1vw 2.3vw;
+    background-color: rgb(23, 203, 219);
+    font-size: max(1vw,13px);
+    border-radius: 50px;
+}
+
+@keyframes fadeIn{
+    0%{
+        opacity:0;
+    }
+    100%{
+        opacity:1;
+    }
+}
+
+@media screen and (max-width:1050px) {
+    .header-contents{
+        max-width: 45%;
+    }   
+}
+
+
+@media screen and (max-width:750px) {
+    .header{
+        height: 65%;
+    }
+    .header-contents p{
+        display: none;
+    }
+    .header-contents button{
+        padding: 2vw 4vw;
+    }   
+}
