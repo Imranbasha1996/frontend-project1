@@ -59,9 +59,9 @@ let storeprovider = (props) => {
 
     }
 
-    useEffect(() => {
-        console.log(cartItems)
-    }, [cartItems])
+    // useEffect(() => {
+    //     console.log(cartItems)
+    // }, [cartItems])
 
     const getTotalCartAmount = () => {
         let totalAmount = 0;
