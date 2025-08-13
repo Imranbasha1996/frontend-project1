@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="footer-content">
         <div className="footer-content-left">
           <img className='logo' src={assets.logo} alt="logo" />
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad molestiae, cum distinctio placeat neque similique ratione nulla culpa quae harum quas dignissimos eos minus aliquid natus voluptate exercitationem nam odit?</p>
+          <p>Your access to all things entertainment is here! With BookMyShow, discover the latest movies, biggest concerts, most awaited sporting events, plays, and various other LIVE event experiences.</p>
           <div className="footer-social-icons">
             {/* <img src={assets.linkedin_icon} alt="Linkedin Icon" /> */}
 
@@ -24,11 +24,11 @@ const Footer = () => {
 
         </div>
         <div className="footer-content-center">
-          <h2>COMPANY </h2>
+          <h2>MoViE M@StI</h2>
           <ul>
             <li>Home</li>
             <li>About us</li>
-           
+
             <li>Privacy Policy</li>
           </ul>
 
