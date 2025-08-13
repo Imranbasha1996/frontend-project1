@@ -13,6 +13,8 @@ import appstore from './appstore.jpg'
 import googleplay from './googleplay.jpg'
 import cross_icon from './cross_icon.jpg'
 import basket_icon from './basket_icon.jpg'
+import booking from './booking.jpg'
+import cross from './cross.jpg'
 
 import bag from './bag.jpg'
 import logout_icon from './logout_icon.jpg'
@@ -36,8 +38,10 @@ export let assets = {
     search_icon,
     bg,
     bag,
+    booking,
     basket_icon,
     cross_icon,
+    cross,
     appstore,
     googleplay,
     facebook,

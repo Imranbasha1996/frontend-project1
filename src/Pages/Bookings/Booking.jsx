@@ -1,22 +1,28 @@
 import React, { useContext, useEffect, useState } from 'react'
 import './Booking.css'
 import { StoreContext } from '../../Context/StoreContext'
+import axios from 'axios'
 const Booking = ({ url }) => {
+
 
   let { getTotalCartAmount, token } = useContext(StoreContext)
 
-// const [selectedTime, setSelectedTime] = useState(""); 
-//   const [selectedSeats, setSelectedSeats] = useState([]);
+  let [selectedTime, setSelectedTime] = useState("");
+  let [Seats, setSeats] = useState([]);
 
-//  const showTimings = ["10:00 AM", "1:00 PM", "4:00 PM", "7:00 PM", "10:00 PM"]; 
+  let showTimings = ["10:00 AM", "1:00 PM", "4:00 PM", "7:00 PM", "10:00 PM"];
 
-//   const toggleSeat = (seat) => {
-//     setSelectedSeats((prevSeats) =>
-//       prevSeats.includes(seat)
-//         ? prevSeats.filter((s) => s !== seat)
-//         : [...prevSeats, seat]
-//     );
-//   };
+  let handleTimeSelection = (time) => {
+    setSelectedTime(time);
+  };
+
+  const toggleSeat = (seat) => {
+    setSelectedSeats((prevSeats) =>
+      prevSeats.includes(seat)
+        ? prevSeats.filter((s) => s !== seat)
+        : [...prevSeats, seat]
+    );
+  };
 
   const [data, setData] = useState({
     firstName: '',
@@ -40,24 +46,24 @@ const Booking = ({ url }) => {
   //     console.log(data)
   // },[data])
 
-  let paymentfunction=async(e)=>{
-e.preventDefault()
-console.log('payment function called')
-let responce=await axoios.post('http://localhost:4000/api/orderds/place',{},{headers:{token}})
-if(responce && respone.status===200){
-  window.location.herf=responce.data.url
-  console.log(responce.data)
+  let paymentfunction = async (e) => {
+    e.preventDefault()
+    console.log('payment function called')
+    let responce = await axios.post('http://localhost:5000/api/orders/place', {}, { headers: { token } })
+    if (responce && responce.status === 200) {
+      window.location.herf = responce.data.url
+      console.log(responce.data)
 
-}
-else{
-  console.log('error')
-}
+    }
+    else {
+      console.log('error')
+    }
   }
 
-  
+
 
   return (
-    <form  onChange={paymentfunction}action="" className='place-order'>
+    <form onChange={paymentfunction} action="" className='place-order'>
       <div className="place-order-left">
         <p className="title">Booking  Information</p>
         <div className="multi-fields">
@@ -78,39 +84,39 @@ else{
 
 
       </div>
-       {/* <div className="show-timings">
-          <p className="title">Select Show Timing</p>
-          <div className="timing-options">
-            {showTimings.map((time) => (
-              <button
-                key={time}
-                className={`time-slot ${selectedTime === time ? 'selected' : ''}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  // handleTimeSelection(time);
-                }}
-              >
-                {time}
-              </button>
-            ))}
-          </div>
+      <div className="show-timings">
+        <p className="title">Select Show Timing</p>
+        <div className="timing-options">
+          {showTimings.map((time) => (
+            <button
+              key={time}
+              className={`time-slot ${selectedTime === time ? 'selected' : ''}`}
+              onClick={(e) => {
+                e.preventDefault();
+                handleTimeSelection(time);
+              }}
+            >
+              {time}
+            </button>
+          ))}
         </div>
- <div className="seat-selection">
-          <p className="title">Select Your Seats</p>
-          <div className="seat-grid">
-            {seats.map((seat) => (
-              <div
-                key={seat}
-                className={`seat ${selectedSeats.includes(seat) ? 'selected' : ''}`}
-                onClick={() => toggleSeat(seat)}
-              >
-                {seat}
-              </div>
-            ))}
-          </div>
+      </div>
+      <div className="seat-selection">
+        <p className="title">Select Your Seats</p>
+        <div className="seat-grid">
+          {Seats.map((seat) => (
+            <div
+              key={seat}
+              className={`seat ${Seats.includes(seat) ? 'selected' : ''}`}
+              onClick={() => toggleSeat(seat)}
+            >
+              {seat}
+            </div>
+          ))}
         </div>
-         */}
-        
+      </div>
+
+
       <div className="place-order-right">
 
         <div className="cart-total">
@@ -138,7 +144,14 @@ else{
           <button type='Submit'>Cheak to Payment</button>
         </div>
 
-
+        {Seats.length > 0 && selectedTime && (
+          <div className="ticket-summary">
+            <h3>🎟️ Ticket Summary</h3>
+            <p><b>Show Time:</b> {selectedTime}</p>
+            <p><b>Selected Seats:</b> {Seats.join(", ")}</p>
+            <p><b>Total Price:</b> Rs.{grandTotal}/-</p>
+          </div>
+        )}
 
       </div>
 

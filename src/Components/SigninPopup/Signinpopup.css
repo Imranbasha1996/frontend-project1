@@ -25,9 +25,11 @@
 .crossicon{
     position: absolute;
     right: 10px;
+    height: 20px;
+    width: 20px;
     top: 10px;
 }
-input{
+.login-popup-inputs img{
 padding: 5px;
 margin-top: 10px;
 }

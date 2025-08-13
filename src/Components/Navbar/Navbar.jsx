@@ -11,11 +11,20 @@ const Navbar = ({ setShowlogin, showLogin }) => {
 
     let [Menu, setMenu] = useState('Home')
 
-    let logout=()=>{
+    let [theme, setTheme] = useState("light");
+
+
+    let logout = () => {
         localStorage.removeItem('token')
         setToken('')
         Navigate('/')
     }
+
+    let toggleTheme = () => {
+        let newTheme = theme === "light" ? "dark" : "light";
+        setTheme(newTheme);
+        document.body.className = newTheme; // Apply theme to the body
+    };
     return (
         <div className='navbar'>
             <img id='logo' src={assets.logo} alt="Logo" />
@@ -32,10 +41,14 @@ const Navbar = ({ setShowlogin, showLogin }) => {
             </div>
 
             <div className="navbar-right">
+
+                            <button className="theme-toggle" onClick={toggleTheme}>
+                {theme === "light" ? "🌙" : "☀️"}
+            </button>
                 <img src={assets.search_icon} alt="search " />
                 <div className="navbar-search-icon">
                     <Link to='/cart'>
-                        <img src={assets.basket_icon} alt="basket icon" />
+                        <img src={assets.booking} alt="basket icon" />
                     </Link>
 
                     {/* <div className="dot">
@@ -45,22 +58,24 @@ const Navbar = ({ setShowlogin, showLogin }) => {
 
 
                 </div>
+
                 {!token ?
                     <button onClick={() => setShowlogin(!showLogin)}>Sign in</button> :
-                   <div className='navbar-profile'>
-          <img src={assets.person} alt="" />
-          <ul className="nav-profile-dropdown">
-            <li>
-                {/* <img src={assets.bag} alt="" /> */}
-            <p>Booking</p></li>
-            <hr />
-            <li>
-                {/* <img src={assets.logout_icon} alt=""  /> */}
-            <p onClick={logout}>Logout</p></li>
-          </ul>
-          </div>
-          }
-                
+                    <div className='navbar-profile'>
+                        {/* <img src={assets.person} alt="" /> */}
+                        <ul className="nav-profile-dropdown">
+                            <li>
+                                {/* <img src={assets.bag} alt="" /> */}
+                                {/* <p>Booking</p> */}
+                                </li>
+                            <hr />
+                            <li>
+                                <img src={assets.logout_icon} alt=""  />
+                                <p onClick={logout}>Logout</p></li>
+                        </ul>
+                    </div>
+                }
+
             </div>
 
 
