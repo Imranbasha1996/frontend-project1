@@ -30,7 +30,7 @@ let storeprovider = (props) => {
         setMovieList(respone.data)
        
     }
-    let url = 'http://localhost:5000'
+    let url = 'https://backend-basha.onrender.com'
 
     let [cartItems, setcartItems] = useState({})
 
